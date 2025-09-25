@@ -1,1 +1,1 @@
-export const RECIPE_API = "https://dummyjson.com/recipes";
+export const RECIPE_API = "https://dummyjson.com/recipes/search?q=";
