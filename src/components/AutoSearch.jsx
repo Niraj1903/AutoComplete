@@ -1,10 +1,7 @@
-import { useState } from "react";
 import useAutoSearchAPI from "../useAutoSearchAPI";
-import { RECIPE_API } from "../utils/constants";
 
 const AutoSearch = () => {
-  const [result, setResult] = useState(false);
-  const { apiData, input, setInput } = useAutoSearchAPI();
+  const { apiData, input, setInput, result, setResult } = useAutoSearchAPI();
 
   return (
     <>

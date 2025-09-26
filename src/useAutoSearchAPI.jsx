@@ -4,11 +4,18 @@ import { RECIPE_API } from "./utils/constants";
 
 const useAutoSearchAPI = () => {
   const [input, setInput] = useState("");
+  const [cache, setCache] = useState({});
   const [apiData, setApiData] = useState([]);
+  const [result, setResult] = useState(false);
 
   const fetchData = async () => {
+    if (cache[input]) {
+      setResult(cache[input]);
+      return;
+    }
     const { data } = await axios.get(RECIPE_API + input);
     setApiData(data?.recipes);
+    setCache((prev) => ({ ...prev, [input]: data?.recipes }));
   };
 
   useEffect(() => {
@@ -17,7 +24,7 @@ const useAutoSearchAPI = () => {
     return () => clearTimeout(timer); //Cleanup previous timeout if input changes
   }, [input]);
 
-  return { apiData, input, setInput, setApiData };
+  return { apiData, input, setInput, setApiData, result, setResult };
 };
 
 export default useAutoSearchAPI;
