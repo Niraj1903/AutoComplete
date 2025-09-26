@@ -24,7 +24,7 @@ const useAutoSearchAPI = () => {
     return () => clearTimeout(timer); //Cleanup previous timeout if input changes
   }, [input]);
 
-  return { apiData, input, setInput, setApiData, result, setResult };
+  return { apiData, input, setInput, result, setResult };
 };
 
 export default useAutoSearchAPI;
