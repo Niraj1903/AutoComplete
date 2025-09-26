@@ -12,7 +12,9 @@ const useAutoSearchAPI = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    const timer = setTimeout(fetchData, 300); // Debouncing
+
+    return () => clearTimeout(timer); //Cleanup previous timeout if input changes
   }, [input]);
 
   return { apiData, input, setInput, setApiData };
